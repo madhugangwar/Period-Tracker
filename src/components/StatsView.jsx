@@ -1,15 +1,8 @@
 import React from 'react';
 import { Calendar, TrendingUp, Clock, Target } from 'lucide-react';
-import { CycleStats, PeriodData, PredictionData } from '../types';
 import { format } from '../utils/dateUtils';
 
-interface StatsViewProps {
-  stats: CycleStats;
-  periodData: PeriodData[];
-  predictions: PredictionData | null;
-}
-
-const StatsView: React.FC<StatsViewProps> = ({ stats, periodData, predictions }) => {
+const StatsView = ({ stats, periodData, predictions }) => {
   const recentPeriods = periodData
     .reduce((acc, period) => {
       const existing = acc.find(p => p.date === period.date);
@@ -17,11 +10,11 @@ const StatsView: React.FC<StatsViewProps> = ({ stats, periodData, predictions })
         acc.push(period);
       }
       return acc;
-    }, [] as PeriodData[])
+    }, [])
     .slice(-5)
     .reverse();
 
-  const getFlowColor = (flow: string) => {
+  const getFlowColor = (flow) => {
     switch (flow) {
       case 'light': return 'bg-coral-200';
       case 'medium': return 'bg-coral-400 ';
@@ -129,7 +122,7 @@ const StatsView: React.FC<StatsViewProps> = ({ stats, periodData, predictions })
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Periods</h3>
         {recentPeriods.length > 0 ? (
           <div className="space-y-3">
-            {recentPeriods.map((period, index) => (
+            {recentPeriods.map((period) => (
               <div key={period.date} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div className="flex items-center space-x-3">
                   <div className={`w-4 h-4 rounded-full ${getFlowColor(period.flow)}`}></div>

@@ -1,16 +1,7 @@
-import React from 'react';
 import { Heart, Zap, Brain, Thermometer, Moon, Smile, Frown, Meh } from 'lucide-react';
-import { SymptomData } from '../types';
 import { format } from '../utils/dateUtils';
 
-interface SymptomTrackerProps {
-  symptoms: SymptomData[];
-  selectedDate: string;
-  onDateSelect: (date: string) => void;
-  onAddSymptom: (date: string, symptom: string) => void;
-}
-
-const SymptomTracker: React.FC<SymptomTrackerProps> = ({
+const SymptomTracker = ({
   symptoms,
   selectedDate,
   onDateSelect,
@@ -42,15 +33,17 @@ const SymptomTracker: React.FC<SymptomTrackerProps> = ({
 
   const selectedSymptoms = symptoms.find(s => s.date === selectedDate)?.symptoms || [];
 
-  const isSymptomSelected = (symptom: string) => {
+  const isSymptomSelected = (symptom) => {
     return selectedSymptoms.includes(symptom);
   };
- 
+
   return (
     <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Symptom Tracker</h2>
-        <p className="text-gray-600  dark:text-white mt-1">Track symptoms and mood for {format(new Date(selectedDate), 'MMMM d, yyyy')}</p>
+        <p className="text-gray-600 dark:text-white mt-1">
+          Track symptoms and mood for {format(new Date(selectedDate), 'MMMM d, yyyy')}
+        </p>
       </div>
 
       <div className="bg-white rounded-xl shadow-sm border border-rose-100 p-6">
@@ -70,7 +63,7 @@ const SymptomTracker: React.FC<SymptomTrackerProps> = ({
             {category.symptoms.map((symptom, index) => {
               const Icon = symptom.icon;
               const isSelected = isSymptomSelected(symptom.name);
-              
+
               return (
                 <button
                   key={index}
@@ -82,16 +75,10 @@ const SymptomTracker: React.FC<SymptomTrackerProps> = ({
                   }`}
                 >
                   <div className="flex flex-col items-center space-y-2">
-                    <div className={`p-3 rounded-full ${
-                      isSelected ? 'bg-coral-100' : 'bg-gray-100'
-                    }`}>
-                      <Icon className={`w-6 h-6 ${
-                        isSelected ? 'text-coral-600' : symptom.color
-                      }`} />
+                    <div className={`p-3 rounded-full ${isSelected ? 'bg-coral-100' : 'bg-gray-100'}`}>
+                      <Icon className={`w-6 h-6 ${isSelected ? 'text-coral-600' : symptom.color}`} />
                     </div>
-                    <span className={`text-sm font-medium ${
-                      isSelected ? 'text-coral-700' : 'text-gray-700'
-                    }`}>
+                    <span className={`text-sm font-medium ${isSelected ? 'text-coral-700' : 'text-gray-700'}`}>
                       {symptom.name}
                     </span>
                   </div>

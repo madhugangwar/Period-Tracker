@@ -1,15 +1,15 @@
 // Simple date utility functions to avoid external dependencies
 
-export const format = (date: Date, formatString: string): string => {
+export const format = (date, formatString) => {
   const year = date.getFullYear();
   const month = date.getMonth();
   const day = date.getDate();
-  
+
   const monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
   ];
-  
+
   const monthNamesShort = [
     'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
@@ -31,56 +31,56 @@ export const format = (date: Date, formatString: string): string => {
   }
 };
 
-export const startOfMonth = (date: Date): Date => {
+export const startOfMonth = (date) => {
   return new Date(date.getFullYear(), date.getMonth(), 1);
 };
 
-export const endOfMonth = (date: Date): Date => {
+export const endOfMonth = (date) => {
   return new Date(date.getFullYear(), date.getMonth() + 1, 0);
 };
 
-export const eachDayOfInterval = ({ start, end }: { start: Date; end: Date }): Date[] => {
-  const days: Date[] = [];
+export const eachDayOfInterval = ({ start, end }) => {
+  const days = [];
   const currentDate = new Date(start);
-  
+
   while (currentDate <= end) {
     days.push(new Date(currentDate));
     currentDate.setDate(currentDate.getDate() + 1);
   }
-  
+
   return days;
 };
 
-export const isSameMonth = (date1: Date, date2: Date): boolean => {
-  return date1.getFullYear() === date2.getFullYear() && 
+export const isSameMonth = (date1, date2) => {
+  return date1.getFullYear() === date2.getFullYear() &&
          date1.getMonth() === date2.getMonth();
 };
 
-export const isSameDay = (date1: Date, date2: Date): boolean => {
-  return date1.getFullYear() === date2.getFullYear() && 
-         date1.getMonth() === date2.getMonth() && 
+export const isSameDay = (date1, date2) => {
+  return date1.getFullYear() === date2.getFullYear() &&
+         date1.getMonth() === date2.getMonth() &&
          date1.getDate() === date2.getDate();
 };
 
-export const addMonths = (date: Date, months: number): Date => {
+export const addMonths = (date, months) => {
   const newDate = new Date(date);
   newDate.setMonth(newDate.getMonth() + months);
   return newDate;
 };
 
-export const subMonths = (date: Date, months: number): Date => {
+export const subMonths = (date, months) => {
   const newDate = new Date(date);
   newDate.setMonth(newDate.getMonth() - months);
   return newDate;
 };
 
-export const addDays = (date: Date, days: number): Date => {
+export const addDays = (date, days) => {
   const newDate = new Date(date);
   newDate.setDate(newDate.getDate() + days);
   return newDate;
 };
 
-export const differenceInDays = (date1: Date, date2: Date): number => {
+export const differenceInDays = (date1, date2) => {
   const diffTime = Math.abs(date1.getTime() - date2.getTime());
   return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 };

@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
-import { Heart, AlertTriangle, Coffee, Droplet, Moon, Thermometer, Activity, Shield, CheckCircle, XCircle } from 'lucide-react';
+import { useState } from 'react';
+import {
+  Heart,
+  AlertTriangle,
+  Coffee,
+  Droplet,
+  Moon,
+  Thermometer,
+  Activity,
+  Shield,
+  CheckCircle,
+  XCircle
+} from 'lucide-react';
 
-const TipsView: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'relief' | 'avoid'>('relief');
+const TipsView = () => {
+  const [activeTab, setActiveTab] = useState('relief'); // Removed TypeScript type
 
   const painReliefTips = [
     {
@@ -32,7 +43,7 @@ const TipsView: React.FC = () => {
       icon: Activity,
       color: 'text-blue-500',
       tips: [
-        'Do gentle yoga poses like child\'s pose or cat-cow stretches',
+        "Do gentle yoga poses like child's pose or cat-cow stretches",
         'Take light walks to improve blood circulation',
         'Try pelvic tilts to relieve lower back pain',
         'Practice deep breathing exercises to reduce stress'
@@ -79,8 +90,8 @@ const TipsView: React.FC = () => {
       icon: AlertTriangle,
       color: 'text-yellow-500',
       warnings: [
-        'Avoid intense workouts if you\'re experiencing severe cramps',
-        'Don\'t ignore severe pain - consult a healthcare provider',
+        "Avoid intense workouts if you're experiencing severe cramps",
+        "Don't ignore severe pain - consult a healthcare provider",
         'Limit stress-inducing activities when possible',
         'Avoid sitting or standing in one position for too long'
       ]
@@ -90,10 +101,10 @@ const TipsView: React.FC = () => {
       icon: Shield,
       color: 'text-indigo-500',
       warnings: [
-        'Don\'t exceed recommended doses of pain relievers',
+        "Don't exceed recommended doses of pain relievers",
         'Avoid aspirin if you have heavy bleeding (consult your doctor)',
         'Be cautious with blood-thinning medications',
-        'Don\'t rely solely on medication - combine with other relief methods'
+        "Don't rely solely on medication - combine with other relief methods"
       ]
     },
     {
@@ -101,9 +112,9 @@ const TipsView: React.FC = () => {
       icon: XCircle,
       color: 'text-gray-500',
       warnings: [
-        'Don\'t skip meals as this can worsen mood and energy levels',
+        "Don't skip meals as this can worsen mood and energy levels",
         'Avoid tight clothing that can restrict blood flow',
-        'Don\'t ignore your body\'s need for rest',
+        "Don't ignore your body's need for rest",
         'Avoid smoking as it can worsen cramps and reduce oxygen flow'
       ]
     }
@@ -113,10 +124,13 @@ const TipsView: React.FC = () => {
     <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Period Tips & Guidance</h2>
-        <p className="text-gray-600 dark:text-white mt-1">Natural remedies and important precautions for your cycle</p>
+        <p className="text-gray-600 dark:text-white mt-1">
+          Natural remedies and important precautions for your cycle
+        </p>
       </div>
 
       <div className="bg-white rounded-xl shadow-sm border border-rose-100 overflow-hidden">
+        {/* Tabs */}
         <div className="flex border-b border-rose-100">
           <button
             onClick={() => setActiveTab('relief')}
@@ -146,8 +160,9 @@ const TipsView: React.FC = () => {
           </button>
         </div>
 
+        {/* Content */}
         <div className="p-6">
-          {activeTab === 'relief' && (
+          {activeTab === 'relief' ? (
             <div className="space-y-6">
               <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                 <div className="flex items-center space-x-2 mb-2">
@@ -155,7 +170,8 @@ const TipsView: React.FC = () => {
                   <h3 className="font-semibold text-green-800">Natural Pain Relief Methods</h3>
                 </div>
                 <p className="text-green-700 text-sm">
-                  These natural remedies can help alleviate period pain and discomfort. Always consult with a healthcare provider for severe symptoms.
+                  These natural remedies can help alleviate period pain and discomfort. Always
+                  consult with a healthcare provider for severe symptoms.
                 </p>
               </div>
 
@@ -181,9 +197,7 @@ const TipsView: React.FC = () => {
                 );
               })}
             </div>
-          )}
-
-          {activeTab === 'avoid' && (
+          ) : (
             <div className="space-y-6">
               <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                 <div className="flex items-center space-x-2 mb-2">
@@ -191,7 +205,8 @@ const TipsView: React.FC = () => {
                   <h3 className="font-semibold text-red-800">Important Precautions</h3>
                 </div>
                 <p className="text-red-700 text-sm">
-                  Avoiding these things can help prevent worsening of period symptoms and promote better overall health during your cycle.
+                  Avoiding these things can help prevent worsening of period symptoms and promote
+                  better overall health during your cycle.
                 </p>
               </div>
 
@@ -227,8 +242,9 @@ const TipsView: React.FC = () => {
           <div>
             <h4 className="font-semibold text-amber-800 mb-1">When to Seek Medical Help</h4>
             <p className="text-amber-700 text-sm">
-              Consult a healthcare provider if you experience severe pain that interferes with daily activities, 
-              periods lasting longer than 7 days, bleeding between periods, or sudden changes in your cycle pattern.
+              Consult a healthcare provider if you experience severe pain that interferes with daily
+              activities, periods lasting longer than 7 days, bleeding between periods, or sudden
+              changes in your cycle pattern.
             </p>
           </div>
         </div>

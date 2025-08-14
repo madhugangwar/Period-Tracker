@@ -1,7 +1,10 @@
-import { PeriodData, CycleData, PredictionData, CycleStats } from '../types';
 import { addDays, differenceInDays } from './dateUtils';
 
-export const calculatePredictions = (periodData: PeriodData[]): PredictionData | null => {
+/**
+ * @param {Array<PeriodData>} periodData
+ * @returns {PredictionData | null}
+ */
+export const calculatePredictions = (periodData) => {
   if (periodData.length < 2) return null;
 
   // Group consecutive period days into cycles
@@ -40,7 +43,11 @@ export const calculatePredictions = (periodData: PeriodData[]): PredictionData |
   };
 };
 
-export const getCycleStats = (periodData: PeriodData[]): CycleStats => {
+/**
+ * @param {Array<PeriodData>} periodData
+ * @returns {CycleStats}
+ */
+export const getCycleStats = (periodData) => {
   const cycles = groupPeriodIntoCycles(periodData);
   
   if (cycles.length === 0) {
@@ -82,12 +89,16 @@ export const getCycleStats = (periodData: PeriodData[]): CycleStats => {
   };
 };
 
-const groupPeriodIntoCycles = (periodData: PeriodData[]): CycleData[] => {
+/**
+ * @param {Array<PeriodData>} periodData
+ * @returns {Array<CycleData>}
+ */
+const groupPeriodIntoCycles = (periodData) => {
   if (periodData.length === 0) return [];
 
   const sortedData = [...periodData].sort((a, b) => a.date.localeCompare(b.date));
-  const cycles: CycleData[] = [];
-  let currentCycle: string[] = [];
+  const cycles = [];
+  let currentCycle = [];
 
   for (let i = 0; i < sortedData.length; i++) {
     const currentDate = new Date(sortedData[i].date);
