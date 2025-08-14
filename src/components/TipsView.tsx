@@ -112,8 +112,8 @@ const TipsView: React.FC = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-3xl font-bold text-gray-900">Period Tips & Guidance</h2>
-        <p className="text-gray-600 mt-1">Natural remedies and important precautions for your cycle</p>
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Period Tips & Guidance</h2>
+        <p className="text-gray-600 dark:text-white mt-1">Natural remedies and important precautions for your cycle</p>
       </div>
 
       <div className="bg-white rounded-xl shadow-sm border border-rose-100 overflow-hidden">

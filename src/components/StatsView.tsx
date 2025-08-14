@@ -24,8 +24,8 @@ const StatsView: React.FC<StatsViewProps> = ({ stats, periodData, predictions })
   const getFlowColor = (flow: string) => {
     switch (flow) {
       case 'light': return 'bg-coral-200';
-      case 'medium': return 'bg-coral-400';
-      case 'heavy': return 'bg-coral-600';
+      case 'medium': return 'bg-coral-400 ';
+      case 'heavy': return 'bg-coral-600 ';
       default: return 'bg-gray-200';
     }
   };
@@ -33,8 +33,8 @@ const StatsView: React.FC<StatsViewProps> = ({ stats, periodData, predictions })
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-3xl font-bold text-gray-900">Cycle Statistics</h2>
-        <p className="text-gray-600 mt-1">Track your patterns and insights</p>
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Cycle Statistics</h2>
+        <p className="text-gray-600 dark:text-white mt-1">Track your patterns and insights</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
